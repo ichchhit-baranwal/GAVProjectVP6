@@ -63,7 +63,7 @@ def extract_vector_data(file_name):
     
 if __name__ == "__main__":
     dir = "../Data/SquareCylinder/"
-    out_dir = "../Data/Output/"
+    out_dir = "../Data/VectorOutput/"
     file_list_file = dir + os.sep + "SquareCylinder.fileseries"
     input_list = []
     with open(file_list_file) as f:
@@ -75,7 +75,7 @@ if __name__ == "__main__":
         for fle in file_list:
             print(fle)
             data, xDim,yDim,zDim, bounds = extract_vector_data(dir+os.sep+fle)
-            fle_name = fle.split(".am")[0] +"_{}x{}x{}_float.raw".format(xDim,yDim,zDim) 
+            fle_name = fle.split(".am")[0] +".raw".format(xDim,yDim,zDim) 
             data.tofile(out_dir+os.sep+fle_name)
             file_.writelines(fle_name + os.linesep)
     with open(out_dir+os.sep+"MetaData.txt","w") as file_:
